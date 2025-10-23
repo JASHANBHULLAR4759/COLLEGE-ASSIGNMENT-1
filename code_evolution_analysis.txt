@@ -1,0 +1,28 @@
+This exercise produced two implementations with identical user-visible behavior but very different internal quality. Below are the key differences, why they matter, and reflections on what I learned—constrained strictly to Week 1–3 concepts (variables, input/print, if/elif/else, while).
+
+1) Naming and intent:  
+The messy version uses short, inconsistent names (e.g., a1…a10, c, x, z). The clean version adopts descriptive names (slot1…slot10, menu_choice, is_running, added, removed). Clear names reduce cognitive load by revealing purpose directly, which improves readability and prevents logic mistakes when scanning long if/elif chains.
+
+2) Header comment and documentation:  
+The clean version begins with a compact header stating purpose, constraints, storage approach, capacity, and behavior. This context lets a reader understand the program before reading any logic. Documentation near the top improves maintainability by making requirements visible and reducing accidental rule violations.
+
+3) Structured layout:  
+The clean code is organized into sections—“Constants & Slots,” “Main loop,” and inline “Menu handlers.” This consistent structure makes it easier to locate the relevant part when editing (e.g., changing prompts vs. changing add/delete logic). Even without advanced features, clear segmentation supports quicker debugging.
+
+4) Input validation rigor:  
+The messy version does only minimal checks (e.g., empty or single space). The clean version validates menu choices (must be 1–5) and rejects blank item names, re-prompting until valid. Strong validation improves correctness and user experience, preventing invalid states (like “choice 9”) from reaching the operation logic.
+
+5) Constants and single source of truth:  
+Introducing CAPACITY (informational) documents the limit explicitly. While slots still require individual variables (as per constraints), the constant clarifies intent and keeps messages consistent with the designed capacity, lowering the risk of drift when instructions change.
+
+6) Duplicate-logic discipline:  
+Both versions must repeat slot checks (no lists allowed), but the clean version uses consistent ordering and sentinel booleans (added/removed) to make the repetition less error-prone. This preserves identical behavior (first free for add, first match for delete) while improving traceability.
+
+7) Messages and spacing:  
+The clean version standardizes prompts, confirmations, and spacing. Consistent phrasing and blank lines improve usability and reduce ambiguity, which makes manual testing more reliable.
+
+Which version is easier to understand and why:  
+The clean version is easier due to meaningful names, explicit sections, guarded input, and consistent messages. Each block communicates its intent, so the reader spends less time inferring purpose from cryptic labels.
+
+What I learned about good practices:  
+Even with only basic Week 1–3 tools, clarity is a design choice: name variables well, state constraints up front, validate inputs, and maintain consistent formatting. Intentional structure and careful repetition can deliver readable, correct programs without relying on advanced features.
